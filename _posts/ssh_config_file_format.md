@@ -37,7 +37,7 @@ categories: Linux
 - **PasswordAuthentication** 是否使用密码认证。
 - **Port** 连接端口，默认22
 - **User** 登录用户名。
-- 
+
 # 更多选项
 - **Match** *pattern* 限制之后的直到下一个**`Host`**或**`Match`**之间的声明只应用于满足*pattern*。
 - **AddKeysToAgent** *{ no | yes | ask | confirm }* 
