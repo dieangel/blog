@@ -85,3 +85,15 @@ aes128-cbc,aes192-cbc,aes256-cbc
 - **ControlPath**
 - **ControlPersist**
 - **DynamicForward** 指定安全隧道端口，后续的远程机器会连接这个端口。参数必须是*[bind_address:]port*。默认情况下，端口与**GatewayPorts**设定的范围一致。支持**socks4, socks5**。
+# 常见用法
+**对不同的主机使用不同的私钥**
+```
+Host blog
+	Hostname blog.tuisiyuan.net
+	IdentityFile ~/.ssh/id_rsa_blog
+	User root
+Host me
+	Hostname 120.55.87.63
+	IdentityFile ~/.ssh/id_rsa_blog
+	User root
+```
