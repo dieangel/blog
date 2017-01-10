@@ -22,7 +22,8 @@ categories: Work
 
 ## day_run.sh 脚本
 __工作流程：__  
-1. 获取昨天日期`yesterday`(yyyymmdd格式，以20161207为例)。  
+**当前日期：20161207**  
+1. 获取昨天日期`yesterday`(20161206,yyyymmdd格式)。  
 2. **客户统计** 执行`./customer_number.sh yesterday user pwd dblink`   
 3. **用户统计** 执行`./user_number.sh yesterday user pwd dblink`  
 4. **用户到达** 执行`./total_number.sh yesterday user pwd dblink`  
@@ -37,10 +38,10 @@ __工作流程：__
 13. **WLAN统计** 执行`./day_run_wlan_tj_detail.sh user pwd dblink`  
 
 其中数据比较大的就是 __detail\_tmp__脚本，其工作流程是：  
-1. __TJ\_DETAIL\_TMP\_B[efore]__ 表中删除 `detdate`小于__yesterday - 2（20161204）__的记录（每次50000行）  
-2. 将__TJ\_DETAIL\_TMP\_Y[esterday]__表中数据插入到 **TJ\_DETAIL\_TMP\_B** 。  
+1. __TJ\_DETAIL\_TMP\_B[efore]__ 表中删除 `detdate`小于__yesterday - 2(20161206 - 2 = 20161204) __的记录（每次50000行）  
+2. 将__TJ\_DETAIL\_TMP\_Y[esterday]__表中数据插入到 **TJ\_DETAIL\_TMP\_B** （当前存放的是5号的数据）。  
 3. `truncate` 表 **TJ\_DETAIL\_TMP\_Y**。  
-4. 将表 **B\_BROADBAND\_DET`mm`\_`dd``** 中的数据插入 **TJ\_DETAIL\_TMP_Y** 。
+4. 将昨天（20161206）表 **B\_BROADBAND\_DET`12`\_`06``** 中的数据插入 **TJ\_DETAIL\_TMP_Y** 。
 
 之后的几个统计脚本数据都基于表 **TJ\_DETAIL\_TMP\_B**。 
  
